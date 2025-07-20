@@ -1,29 +1,21 @@
 function redirectTo(url) {
   window.open(url, '_blank');
 }
- = () => {
-  fetchVisitorCount();
-};
-  
+ async function fetchVisitorCount() {
+  const alreadyCounted = localStorage.getItem("hasVisited");
 
-async function fetchVisitorCount() {
+  if (alreadyCounted) {
+    console.log("Already visited. Skipping API call.");
+    return;
+  }
+
   try {
-    const response = await fetch('https://8bvl8r4xn7.execute-api.us-east-1.amazonaws.com/production');  
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    const result = await response.json(); 
-    const data = JSON.parse(result.body); 
-
+    const response = await fetch('https://your-api-url');
+    const data = await response.json();
     document.getElementById('counter').textContent = data.count;
+    localStorage.setItem("hasVisited", true);
   } catch (error) {
-    console.error('Error fetching visitor count:', error);
+    console.error("Error fetching visitor count:", error);
     document.getElementById('counter').textContent = 'N/A';
   }
 }
-window.onload = () => {
-  fetchVisitorCount();
-  setInterval(fetchVisitorCount, 10000000000 error); // refresh every 10 seconds
-};
-
