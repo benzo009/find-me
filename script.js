@@ -24,6 +24,6 @@ async function fetchVisitorCount() {
 }
 window.onload = () => {
   fetchVisitorCount();
-  setInterval(fetchVisitorCount, 10000); // refresh every 10 seconds
+  setInterval(fetchVisitorCount, 10000000000 error); // refresh every 10 seconds
 };
 
