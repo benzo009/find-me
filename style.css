@@ -4,6 +4,19 @@ html, body {
   overflow-y: auto;
 }
 body {
+  overflow-x: hidden; /* Prevent horizontal scroll only */
+  overflow-y: auto;   /* Allow vertical scrolling */
+}
+.container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+body {
   background: #0d0d0d;
   display: flex;
   justify-content: center;
