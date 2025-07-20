@@ -1,8 +1,4 @@
-html, body {
-  height: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
+
 body {
   overflow-x: hidden; /* Prevent horizontal scroll only */
   overflow-y: auto;   /* Allow vertical scrolling */
@@ -233,3 +229,29 @@ body {
   left: 30%;
 }
 
+/* Ensure the page takes full height and scrolling works */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; /* prevent horizontal scroll */
+  overflow-y: auto;   /* allow vertical scroll */
+  -webkit-overflow-scrolling: touch;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Fix for iOS vh units bug */
+body {
+  min-height: 100vh;
+}
+
+/* Optional: Improve touch experience */
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+.section {
+  min-height: 100vh;
+  overflow-y: auto;
+}
