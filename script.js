@@ -1,7 +1,7 @@
 function redirectTo(url) {
   window.open(url, '_blank');
 }
-window.onload = () => {
+ = () => {
   fetchVisitorCount();
 };
   
