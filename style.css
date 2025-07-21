@@ -1,17 +1,3 @@
-
-body {
-  overflow-x: hidden; /* Prevent horizontal scroll only */
-  overflow-y: auto;   /* Allow vertical scrolling */
-}
-.container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-}
-html, body {
-  height: 100%;
-  overflow: hidden;
-}
 body {
   background: #0d0d0d;
   display: flex;
@@ -228,30 +214,23 @@ body {
   top: 65%;
   left: 30%;
 }
-
-/* Ensure the page takes full height and scrolling works */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden; /* prevent horizontal scroll */
-  overflow-y: auto;   /* allow vertical scroll */
-  -webkit-overflow-scrolling: touch;
-  font-family: 'Arial', sans-serif;
+.floating-text:nth-of-type(8) {
+  top: 80%;
+  left: 70%;
+}
+.floating-text:nth-of-type(9) {
+  top: 50%;
+  left: 10%;
 }
 
-/* Fix for iOS vh units bug */
-body {
-  min-height: 100vh;
-}
-
-/* Optional: Improve touch experience */
-* {
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-}
-.section {
-  min-height: 100vh;
-  overflow-y: auto;
+@keyframes floatText {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  30% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+  90% {
+    transform: translateY(0) rotate(0deg);
+  }
 }
