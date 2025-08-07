@@ -1,26 +1,17 @@
 version: 0.2
 
 phases:
-install:
-runtime-versions:
-nodejs: 18
-commands:
-- echo "Installing dependencies..."
-- npm install
-
-build:
-commands:
-- echo "Building frontend..."
-- npm run build
-
-post_build:
-commands:
-- echo "Syncing build output to S3 (find-me-2)..."
-- aws s3 sync ./build s3://find-me-2/ --delete
-- echo "Invalidating CloudFront cache (E53TEA4J2CIO0)..."
-- aws cloudfront create-invalidation --distribution-id E53TEA4J2CIO0 --paths "/*"
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "Installing dependencies if any (not required for static sites)"
+  build:
+    commands:
+      - echo "Building and deploying static website..."
+      - aws s3 sync . s3://find-me-2 --delete
+      - aws cloudfront create-invalidation --distribution-id E53TEA4J2CIO0 --paths "/*"
 
 artifacts:
-files:
-- '**/*'
-base-directory: build
+  files:
+    - '**/*'
