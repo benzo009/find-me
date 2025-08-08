@@ -59,5 +59,5 @@ await fetchVisitorCount(false);
 // Run after DOM loads
 document.addEventListener("DOMContentLoaded", () => {
 updateVisitorCount(); // Initial load
-setInterval(() => fetchVisitorCount(false), 3000); // Every 3 seconds
+setInterval(() => fetchVisitorCount(false), 300000); // Every 3 seconds
 });
