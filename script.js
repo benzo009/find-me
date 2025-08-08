@@ -1,3 +1,7 @@
+function redirectTo(url) {
+window.open(url, "_blank");
+}
+
 const API_URL = "https://v13rxnxr2m.execute-api.us-east-1.amazonaws.com/prod";
 const COOKIE_NAME = "visitor_tracked";
 const COOKIE_DURATION_MINUTES = 1440;
@@ -20,10 +24,10 @@ return true;
 return false;
 }
 
-// Main function to update count
+// Main function to update count (increments only if no cookie)
 async function updateVisitorCount() {
 if (hasVisitorCookie(COOKIE_NAME)) {
-console.log("Visitor recently tracked. Skipping API call.");
+console.log("Visitor recently tracked. Skipping increment API call.");
 return;
 }
 
@@ -53,7 +57,7 @@ console.error("Failed to fetch visitor count:", err);
 }
 }
 
-// Function to fetch count without touching cookies
+// Function to refresh live count every 5 minutes (does not increment)
 async function refreshLiveCount() {
 try {
 const response = await fetch(API_URL, {
@@ -69,17 +73,16 @@ const data = await response.json();
 
 if (data && typeof data.count === "number") {
 document.getElementById("visitor-count").textContent = data.count;
-console.log("Live visitor count refreshed to:", data.count);
+console.log("Live count refreshed:", data.count);
 }
 } catch (err) {
-console.error("Failed to refresh visitor count:", err);
+console.error("Failed to refresh live count:", err);
 }
 }
 
 // Run after DOM loads
 document.addEventListener("DOMContentLoaded", () => {
 updateVisitorCount();
-
-// Refresh the count every 5 minutes (300,000 ms)
-setInterval(refreshLiveCount, 300000);
-})
+refreshLiveCount(); // Immediate refresh for all users
+setInterval(refreshLiveCount, 5 * 60 * 1000); // Refresh every 5 minutes
+});
