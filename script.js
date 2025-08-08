@@ -2,11 +2,11 @@ function redirectTo(url) {
   window.open(url, "_blank");
   }
   
-  const API_URL = "https://v13rxnxr2m.execute-api.us-east-1.amazonaws.com/prod"; // your real API Gateway URL
+  const API_URL = "https://v13rxnxr2m.execute-api.us-east-1.amazonaws.com/prod"; // API GATEWAY
   const COOKIE_NAME = "visitor_tracked";
-  const COOKIE_DURATION_MINUTES = 1;
+  const COOKIE_DURATION_MINUTES = 1,440;
   
-  // ✅ Set cookie that expires in X minutes
+  // ✅ Set cookie that expires in () minutes
   function setVisitorCookie(name, minutes) {
   const date = new Date();
   date.setTime(date.getTime() + (minutes * 60 * 1000));
