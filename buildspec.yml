@@ -9,7 +9,7 @@ commands:
 build:
 commands:
 - echo "Building and deploying static website..."
-- aws s3 sync src/ s3://find-me-2.1 --delete
+- aws s3 sync src/ s3://find-me-2.2 --delete
 - aws cloudfront create-invalidation --distribution-id E53TEA4J2CIO0 --paths "/*"
 
 artifacts:
