@@ -9,46 +9,12 @@ commands:
 
 build:
   commands:
-      # section1
-      - echo "Preparing files for deployment..."
-      - mkdir build
-      - cp -r src/* build/
-      # Deploy all files to S3 root with correct metadata and public-read
-      - echo "Uploading HTML files..."
-      
-      - aws s3 cp build/ s3://find-me-2.1/ --recursive --exclude "*" --include "*.html" --content-type "text/html" --acl public-read
-      - echo "Uploading CSS files..."
-      - aws s3 cp build/ s3://find-me-2.1/ --recursive --exclude "*" --include "*.css" --content-type "text/css" --acl public-read
-      
-      - echo "Uploading JS files..."
-      - aws s3 cp build/ s3://find-me-2.1/ --recursive --exclude "*" --include "*.js" --content-type "application/javascript" --acl public-re
-      
-      - echo "Uploading PNG images..."
-      - aws s3 cp build/ s3://find-me-2.1/ --recursive --exclude "*" --include "*.png" --content-type "image/png" --acl public-read
-      
-      - echo "Uploading JPG/JPEG images..."
-      - aws s3 cp build/ s3://find-me-2.1/ --recursive --exclude "*" --include "*.jpg" --content-type "image/jpeg" --acl public-read
-      - aws s3 cp build/ s3://find-me-2.1/ --recursive --exclude "*" --include "*.jpeg" --content-type "image/jpeg" --acl public-read
-
-      - echo "Uploading SVG images..."
-      - aws s3 cp build/ s3://find-me-2.1/ --recursive --exclude "*" --include "*.svg" --content-type "image/svg+xml" --acl public-read
-      
-      - echo "Uploading other static assets (fonts, etc.)..."
-      - aws s3 cp build/ s3://find-me-2.1/ --recursive --exclude "*" --include "*.ttf" --content-type "font/ttf" --acl public-read
-      
-      # section2
-      - echo   "Cleaning dist folder..."
-      - rm -rf dist
-      - mkdir -p dist
-      
-      - echo "copying source files to dist..."
-      - cp -r scr/* dist/
-      
-      - echo "Deploying to s3..."
-      
-       echo "Building and deploying static website..."
-      - aws s3 sync "src/" "s3://find-me-2.1" --delete
-      - aws cloudfront create-invalidation --distribution-id "E53TEA4J2CIO0" --paths "/*"
+   
+  - echo "Building and deploying static website..."
+# Sync local files to S3 bucket
+- aws s3 sync "src/" "s3://find-me-2.1" --delete
+# Create CloudFront invalidation
+- aws cloudfront create-invalidation --distribution-id "E53TEA4J2CIO0" --paths "/*"
 
 artifacts:
   files:
