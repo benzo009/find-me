@@ -9,16 +9,6 @@ commands:
 
 build:
   commands:
-      - echo "Deploying static website with correct metadata..."
-      - aws s3 cp src/ s3://find-me-2.1/ --recursive --exclude "*" --include "*.html" --content-type "text/html"
-      - aws s3 cp src/ s3://find-me-2.1/ --recursive --exclude "*" --include "*.css" --content-type "text/css"
-      - aws s3 cp src/ s3://find-me-2.1/ --recursive --exclude "*" --include "*.js" --content-type "application/javascript"
-      - aws s3 cp src/ s3://find-me-2.1/ --recursive --exclude "*" --include "*.png" --content-type "image/png"
-      - aws s3 cp src/ s3://find-me-2.1/ --recursive --exclude "*" --include "*.jpg" --content-type "image/jpeg"
-      - aws s3 cp src/ s3://find-me-2.1/ --recursive --exclude "*" --include "*.jpeg" --content-type "image/jpeg"
-      - aws s3 cp src/ s3://find-me-2.1/ --recursive --exclude "*" --include "*.svg" --content-type "image/svg+xml"
-      - aws s3 cp src/ s3://find-me-2.1/ --recursive --exclude "*" --include "*.ttf" --content-type "font/ttf"
-      
       # section1
       - echo "Preparing files for deployment..."
       - mkdir build
