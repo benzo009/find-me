@@ -9,6 +9,12 @@ commands:
 
 build:
   commands:
+   - echo   "Cleaning dist folder..."
+   - rm -rf dist
+   - mkdir -p dist
+   - echo "copying source files to dist..."
+   - cp -r scr/* dist/
+   - echo "Deploying to s3..."
    - echo "Building and deploying static website..."
    - aws s3 sync "src/" "s3://find-me-2.1" --delete
    - aws cloudfront create-invalidation --distribution-id "E53TEA4J2CIO0" --paths "/*"
