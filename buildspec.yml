@@ -14,7 +14,6 @@ commands:
 - aws s3 sync "src/" "s3://find-me-2.2" 
 # Create CloudFront invalidation
 - aws cloudfront create-invalidation --distribution-id "E53TEA4J2CIO0" --paths "/*"
-
 artifacts:
 files:
 - '**/*'
