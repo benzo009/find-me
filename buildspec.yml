@@ -20,4 +20,15 @@ build:
   - aws cloudfront create-invalidation --distribution-id E53TEA4J2CIO0 --paths "/*"
 
 artifacts:
-  files: []
+  files:
+    - '**/*'
+  discard=paths: no
+  base-directory: build
+  secondary-artifacts:
+    myBucket:
+      files:
+        - '**/*'
+      name: myArtifact
+      override-artifact-name: true
+      packging: zip
+      
