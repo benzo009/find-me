@@ -4,17 +4,15 @@ phases:
   install:
     runtime-versions:
       nodejs: 18
-  commands:
-    - echo "Installing dependencies if any"
+   commands:
+     - echo "Installing dependencies if any"
 
 build:
   commands:
-    - echo "Preparing files for deployment..."
-# Copy all files from src/ to a temporary build folder
-- mkdir build
-- cp -r src/* build/
-# Invalidate CloudFront cache so changes appear immediately
-- aws cloudfront create-invalidation --distribution-id "E53TEA4J2CIO0" --paths "/*"
+  - echo "Building and deploying static website..."
+  - aws s3 sync "src/" "s3://find-me-2.1" --delete
+  - aws cloudfront create-invalidation --distribution-id "E53TEA4J2CIO0" --paths "/*"
 
 artifacts:
-  files: []
+  files:
+    - '**/*'
