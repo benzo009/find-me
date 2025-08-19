@@ -22,7 +22,7 @@ build:
 artifacts:
   files:
     - '**/*'
-  discard=paths: no
+  discard-paths: no
   base-directory: build
   secondary-artifacts:
     myBucket:
