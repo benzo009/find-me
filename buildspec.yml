@@ -4,9 +4,9 @@ phases:
   install:
     runtime-versions:
       nodejs: 18
-  commands:
-    - echo "Install phase - no extra dependencies needed"
-
+ commands:
+      - echo "No dependencies needed for static website."
+      
 build:
   commands:
   - echo "Starting build..."
