@@ -4,7 +4,8 @@ phases:
   install:
 
     commands:
-      - echo "No dependencies needed for static website."
+      - echo installing dependencies
+      - npm install
       
 build:
   commands:
