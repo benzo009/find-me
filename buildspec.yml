@@ -12,9 +12,7 @@ build:
   - aws s3 sync src/ s3://find-me-2.1/ --exact-timestamps
 
   # Invalidate CloudFront so updates show immediately
-  - aws cloudfront create-invalidation \
-  --distribution-id "E53TEA4J2CIO0" \
-  --paths "/*"
+  - aws cloudfront create-invalidation --distribution-id E53TEA4J2CIO0 --paths "/*"
 
 artifacts:
   files: []
