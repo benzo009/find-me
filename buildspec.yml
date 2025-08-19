@@ -13,7 +13,6 @@ commands:
 - echo "Deploying only changed files to S3..."
 # Sync without deleting, only upload new/modified files
 - aws s3 sync ./dist s3://YOUR_BUCKET_NAME --exact-timestamps
-
 artifacts:
 files:
 - '**/*'
