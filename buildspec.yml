@@ -2,9 +2,8 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      nodejs: 18
- commands:
+
+    commands:
       - echo "No dependencies needed for static website."
       
 build:
