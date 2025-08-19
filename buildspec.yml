@@ -15,9 +15,6 @@ build:
 - mkdir build
 - cp -r src/* build/
 
-# Deploy to S3 with auto-detected MIME types and public read
-- aws s3 sync build/ s3://find-me-2.1/ --delete --acl public-read --exact-timestamps
-
 # Invalidate CloudFront cache so changes appear immediately
 - aws cloudfront create-invalidation --distribution-id "E53TEA4J2CIO0" --paths "/*"
 
