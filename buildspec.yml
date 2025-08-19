@@ -2,17 +2,19 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      nodejs: 20
-   commands:
-     - echo "Installing dependencies if any"
+    commands:
+      - echo "No dependencies needed for static website."
 
 build:
   commands:
-  - echo "Building and deploying static website..."
-  - aws s3 sync "src/" "s3://find-me-2.1" --delete
-  - aws cloudfront create-invalidation --distribution-id "E53TEA4J2CIO0" --paths "/*"
+  - echo "Deploying portfolio website to S3..."
+  # Sync only changed files (fast deployment, no unnecessary deletes)
+  - aws s3 sync src/ s3://find-me-2.1/ --exact-timestamps
+
+  # Invalidate CloudFront so updates show immediately
+  - aws cloudfront create-invalidation \
+  --distribution-id "E53TEA4J2CIO0" \
+  --paths "/*"
 
 artifacts:
-  files:
-    - '**/*'
+  files: []
