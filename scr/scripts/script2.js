@@ -10,7 +10,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-// : Contact Form Submission (Formspree or EmailJS example)
+// : Contact Form Submission (Formspree)
 const form = document.getElementById("contact-form");
 form.addEventListener("submit", async function(e) {
   e.preventDefault();
@@ -24,10 +24,10 @@ form.addEventListener("submit", async function(e) {
   });
 
   if (response.ok) {
-    alert("Thank you! Your message has been sent.");
+    alert("Thank you! Your message has been sent, will get back to you soon");
     form.reset();
   } else {
-    alert("Oops! Something went wrong.");
+    alert( "Oops! Something went wrong. try again later");
   }
 });
 
@@ -47,42 +47,24 @@ sections.forEach(section => {
   observer.observe(section);
 });
 
-
 // Scroll fade-in animation for main sections
-
 document.addEventListener('DOMContentLoaded', () => {
 
   const faders = document.querySelectorAll('.about, .stack, .projects, .contact');
-
-
   const appearOptions = {
-
     threshold: 0.1,
-
     rootMargin: "0px 0px -100px 0px"
-
   };
-
-
   const appearOnScroll = new IntersectionObserver((entries, observer) => {
 
     entries.forEach(entry => {
-
       if (!entry.isIntersecting) return;
-
       entry.target.classList.add('fade-in-visible');
-
       observer.unobserve(entry.target);
-
     });
-
   }, appearOptions);
 
-
   faders.forEach(fader => {
-
     appearOnScroll.observe(fader);
-
   });
-
 });
