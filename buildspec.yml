@@ -3,19 +3,12 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Nothing to install for static site"
+      - echo "No install needed"
 build:
   commands:
-    - echo "Starting build phase..."
-    # Sync all files to S3 bucket, delete removed ones, preserve timestamps
-    - aws s3 sync . s3://find-me2.2 --delete --exact-timestamps --cache-control "max-age=86400"
-    - echo "Build phase complete"
-post_build:
-  commands:
-    - echo "Starting post-build phase..."
-    # Invalidate CloudFront cache so new files are served
-    - aws cloudfront create-invalidation --distribution-id E2PUUAKPV1IWCT --paths "/*"
-    - echo "Post-build phase complete"
+    - echo "Copying files to S3..."
+    - aws s3 sync . s3://find-me-2.2 --delete --exact-timestamps
 
 artifacts:
-  files: []
+  files:
+    - '**/*'
