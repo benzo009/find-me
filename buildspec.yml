@@ -2,20 +2,20 @@ version: 0.2
 
 phases:
   install:
-
     commands:
-      - echo "Installing independencies if needed...."
-      
+      - echo "Nothing to install for static site"
 build:
   commands:
-  - echo "Starting build..."
-  # Sync contents of scr/ to S3 root
-  - aws s3 sync scr/ s3://find-me-2.2  --exact-timestamps
-  # Ensure metadata is correct
-  - aws s3 cp s3://find-me-2.2 s3://find-me-2.2 --recursive --exclude "*" --include "*.html" --content-type "text/html" --metadata-directive REPLACE
-  - aws s3 cp s3://find-me-2.2 s3://find-me-2.2 --recursive --exclude "*" --include "*.css" --content-type "text/css" --metadata-directive REPLACE
-  - aws s3 cp s3://find-me-2.2 s3://find-me-2.2 --recursive --exclude "*" --include "*.js" --content-type "application/javascript" --metadata-directive REPLACE
-  - aws s3 cp s3://find-me-2.2 s3://find-me-2.2 --recursive --exclude "*" --include "*.png" --include "*.jpg" --include "*.jpeg" --include "*.gif" --include "*.svg" --content-type "image/*" --metadata-directive REPLACE
-  # Invalidate CloudFront cache so changes are visible immediately
-  - aws cloudfront create-invalidation --distribution-id E53TEA4J2CIO0 --paths "/*"
+    - echo "Starting build phase..."
+    # Sync all files to S3 bucket, delete removed ones, preserve timestamps
+    - aws s3 sync . s3://find-me2.2 --delete --exact-timestamps --cache-control "max-age=86400"
+    - echo "Build phase complete"
+post_build:
+  commands:
+    - echo "Starting post-build phase..."
+    # Invalidate CloudFront cache so new files are served
+    - aws cloudfront create-invalidation --distribution-id E2PUUAKPV1IWCT --paths "/*"
+    - echo "Post-build phase complete"
 
+artifacts:
+  files: []
