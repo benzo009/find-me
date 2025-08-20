@@ -2,6 +2,8 @@ function redirectTo(url) {
 window.open(url, "_blank");
 }
 
+window.alert('welcome to find me2.2!!')
+
 const API_URL = "https://v13rxnxr2m.execute-api.us-east-1.amazonaws.com/prod";
 const COOKIE_NAME = "visitor_tracked";
 const API_KEY = "mUCemRohTw1qQGF8PyTmuhn7bUSH3FG9ibZYein7";
