@@ -1,14 +1,11 @@
 version: 0.2
 
 phases:
-  install:
+  build:
     commands:
-      - echo "No install needed"
-build:
-  commands:
-    - echo "Copying files to S3..."
-    - aws s3 sync . s3://find-me-2.2 --delete --exact-timestamps
+      - echo "Preparing files for s3 deployment..."
 
 artifacts:
   files:
     - '**/*'
+  discard-paths: no  
