@@ -1,0 +1,132 @@
+/* Projects */
+.projects{ background: var(--soft-2); }
+.projects h2{ margin-bottom: 1.25rem; }
+.project-grid{
+width: 100%;
+max-width: var(--container);
+margin-inline: auto;
+display: grid;
+grid-template-columns: 1fr;
+gap: 1.2rem;
+padding-inline: 0;
+}
+@media (min-width: 650px){ .project-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1050px){ .project-grid{ grid-template-columns: repeat(3, 1fr); } }
+
+.project-card{
+background: var(--card);
+border: 1px solid var(--soft);
+border-radius: var(--radius);
+overflow: clip;
+box-shadow: var(--shadow);
+transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+display: grid;
+grid-template-rows: auto 1fr auto;
+min-height: 100%;
+padding: 1rem;
+}
+.project-card:hover{
+transform: translateY(-4px);
+box-shadow: 0 14px 40px rgba(2, 6, 23, .12);
+border-color: color-mix(in oklab, var(--primary) 30%, var(--soft));
+}
+.project-card img{
+width: 100%;
+height: auto;
+border-radius: calc(var(--radius) - 8px);
+margin-bottom: .75rem;
+}
+.project-card h3{
+font-size: 1.1rem;
+margin-bottom: .25rem;
+font-weight: 800;
+}
+.project-card p{
+color: var(--muted);
+font-size: var(--step--1);
+margin-bottom: .5rem;
+}
+.project-card a{
+justify-self: start;
+margin-top: .25rem;
+padding: .5rem .8rem;
+border-radius: 10px;
+background: linear-gradient(135deg, var(--primary), var(--primary-2));
+color: #fff;
+font-weight: 700;
+}
+
+/* Visitor counter */
+.visitor-wrapper{
+display: flex;
+align-items: center;
+justify-content: center;
+gap: .6rem;
+margin-top: 1.25rem;
+}
+.visitor-counter{
+font-size: var(--step-2);
+font-weight: 800;
+background: linear-gradient(135deg, var(--primary), var(--primary-2));
+-webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.live-badge{
+font-size: .7rem;
+font-weight: 800;
+padding: .25rem .5rem;
+border-radius: 999px;
+background: #ef4444;
+color: #fff;
+}
+
+/* Contact */
+.contact{ width: 100%; max-width: var(--container); margin-inline: auto; }
+.contact form{
+width: min(560px, 92vw);
+margin-inline: auto;
+display: grid;
+gap: .85rem;
+}
+.contact input,
+.contact textarea{
+width: 100%;
+padding: .9rem 1rem;
+border-radius: 12px;
+border: 1px solid var(--soft);
+background: var(--card);
+color: var(--text);
+font-size: var(--step--1);
+transition: border-color .2s ease, box-shadow .2s ease;
+}
+.contact textarea{ min-height: 140px; resize: vertical; }
+.contact input:focus, .contact textarea:focus{
+border-color: color-mix(in oklab, var(--primary) 45%, var(--soft));
+box-shadow: 0 0 0 4px var(--ring);
+outline: none;
+}
+.contact .btn{
+border: 0;
+background: linear-gradient(135deg, var(--primary), var(--primary-2));
+color: #fff;
+}
+
+/* Footer */
+footer{
+border-top: 1px solid var(--soft);
+background: color-mix(in oklab, var(--bg) 90%, transparent);
+text-align: center;
+padding: 1.75rem 1rem;
+color: var(--muted);
+font-size: var(--step--1);
+}
+
+/* --- Layout polish on medium+ screens --- */
+@media (min-width: 768px){
+section{ padding: 3.5rem 1rem; }
+}
+
+/* --- Layout polish on large screens --- */
+@media (min-width: 1200px){
+.hero{ min-height: 76vh; }
+}
+	
