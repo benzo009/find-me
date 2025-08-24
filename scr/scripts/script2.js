@@ -10,6 +10,29 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+// Toggle mobile menu
+menuToggle.addEventListener("click", () => {
+navLinks.classList.toggle("active");
+menuToggle.classList.toggle("active");
+});
+
+// Smooth scroll + close menu after click
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+link.addEventListener("click", function(e) {
+e.preventDefault();
+const targetID = this.getAttribute("href").slice(1);
+const targetSection = document.getElementById(targetID);
+if (targetSection) {
+targetSection.scrollIntoView({ behavior: "smooth" });
+}
+navLinks.classList.remove("active");
+menuToggle.classList.remove("active");
+});
+});
+
 // : Contact Form Submission (Formspree)
 const form = document.getElementById("contact-form");
 form.addEventListener("submit", async function(e) {

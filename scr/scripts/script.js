@@ -7,7 +7,7 @@ const COOKIE_NAME = "visitor_tracked";
 const API_KEY = "mUCemRohTw1qQGF8PyTmuhn7bUSH3FG9ibZYein7";
 const COOKIE_DURATION_MINUTES = 1440;
 
-// Set cookie that expires in () minutes
+// Set cookie that expires in 60,000 minutes
 function setVisitorCookie(name, minutes) {
 const date = new Date();
 date.setTime(date.getTime() + (minutes * 60 * 1000));
@@ -32,7 +32,7 @@ const response = await fetch(API_URL, {
 method: "GET",
 credentials: "include",
 headers: {
-"x-api-key": API_KEY, // 🔑 secure API calls with API key
+"x-api-key": API_KEY,
 "Content-Type": "application/json"
 }
 });
@@ -51,7 +51,6 @@ console.error("Failed to fetch visitor count:", err);
 }
 }
 
-// Main function to update and set cookie if needed
 async function updateVisitorCount() {
 if (!hasVisitorCookie(COOKIE_NAME)) {
 await fetchVisitorCount(true);
@@ -61,7 +60,7 @@ await fetchVisitorCount(false);
 }
 }
 
-// Run after DOM loads
+
 document.addEventListener("DOMContentLoaded", () => {
 updateVisitorCount(); // Initial load
 setInterval(() => fetchVisitorCount(false), 86400000); // Every 24 hours

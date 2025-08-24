@@ -11,14 +11,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
-<body></body>
+
 
 <!-- Navigation -->
 <header>
 <nav class="navbar">
 <h1 class="logo">Benjamin.dev</h1>
-<div class="menu-toggle" id="menu-toggle">&#9776;</div>
-<ul class="nav-links">
+<div class="menu-toggle" id="menu-toggle">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<ul class="nav-links" id="nav-links">
 <li><a href="#about">About</a></li>
 <li><a href="#projects">Projects</a></li>
 <li><a href="#stack">Stacks</a></li>
@@ -75,36 +79,43 @@
   </div>
   </section>
   
-  <!-- Projects Section -->
-  <section id="projects" class="projects">
-  <h2>Projects</h2>
-  <div class="project-grid">
+<!-- Projects Section -->
+<section id="projects" class="projects">
+<h2>Projects</h2>
+<div class="project-grid">
 
-    <!--visitor count-->
-  <div class="project-card">
-  <img src="/scr/assets/project1.jpg.png" alt="Visitor count" />
-  <h3>Visitor Count</h3>
-  <p>Built with AWS Lambda, API Gateway, DynamoDB.</p>
-  <a href="https://github.com/benzo009/visitor-count1.0" target="_blank" rel="noopener">GitHub Repo</a>
-  </div>
-  <!--aws cognito authtication-->
-  <div class="project-card">
-  <img src="/scr/assets/project2.jpg.png" alt="React Portfolio Project" />
-  <h3>Aws Cognito Authtication--</h3>
-  <p>Interactive frontend portfolio using React.</p>
-  <a href="#" target="_blank" rel="noopener">Live Demo</a>
-  </div>
-  </div>
+<!-- Visitor Count -->
+<div class="project-card">
+<img src="/scr/assets/project1.jpg.png" alt="Visitor count" />
+<h3>API Count</h3>
+<p>Built with AWS Lambda, API Gateway, DynamoDB.</p>
+<a href="https://github.com/benzo009/visitor-count1.0" target="_blank" rel="noopener">GitHub Repo</a>
 
-    
+<div class="visitor-wrapper">
+<span id="visitor-count" class="visitor-counter">0</span>
+<span class="live-badge">AIP COUNT</span>
+</div>
+</div>
 
+<!-- AWS Cognito Authentication -->
+<div class="project-card">
+<img src="/scr/assets/project2.jpg.png" alt="AWS Cognito Authentication" />
+<h3>AWS Cognito Authentication</h3>
+<p>Authentication system with AWS Cognito, API Gateway & frontend integration.</p>
+<a href="#" target="_blank" rel="noopener">Live Demo</a>
+</div>
 
+<!-- AWS Image Processing -->
+<div class="project-card">
+<img src="/scr/assets/project1.jpg.png" alt="AWS Image Processing" />
+<h3>AWS Image Processing</h3>
+<p>Serverless image processing pipeline using Lambda & S3.</p>
+<a href="#" target="_blank" rel="noopener">Live Demo</a>
+</div>
+
+</div>
+</section>
   
-  <div class="visitor-wrapper">
-  <span id="visitor-count" class="visitor-counter">0</span>
-  <span class="live-badge">LIVE</span>
-  </div>
-  </section>
   
   <!-- Contact Section -->
   <section id="contact" class="contact">
@@ -122,4 +133,3 @@
   <p>© 2025 Benjamin. All rights reserved.</p>
   </footer>
 </body>
-</html>
