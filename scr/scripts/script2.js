@@ -91,3 +91,4 @@ document.addEventListener('DOMContentLoaded', () => {
     appearOnScroll.observe(fader);
 })
 });
+
